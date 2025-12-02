@@ -120,6 +120,11 @@ public class Main {
 
         //Daemon thread
         DaemonMonitor.start();
+
+
+        // Scheduled queue moniotr
+        QueueSizePrinter.start(queue);
+
         // Producers
         executor.execute(new Producer(queue, 1));
         executor.execute(new Producer(queue, 2));
@@ -137,5 +142,36 @@ public class Main {
 
         System.out.println("CallableConsumer processed: " + tasksProcessed + " tasks");
         System.out.println("System finished.");
+
+
+
+        /*
+        Lesson 9
+         */
+
+//        MyBlockingQueue<Integer> myQueue = new MyBlockingQueue<>(3);
+//
+//        Thread producer = new Thread(() -> {
+//            try {
+//                for (int i = 1; i <= 5; i++) {
+//                    myQueue.put(i);
+//                    System.out.println("PUT: " + i);
+//                }
+//            } catch (Exception e) {}
+//        });
+//
+//        Thread consumer = new Thread(() -> {
+//            try {
+//                for (int i = 1; i <= 5; i++) {
+//                    int item = myQueue.take();
+//                    System.out.println("TAKE: " + item);
+//                }
+//            } catch (Exception e) {}
+//        });
+//
+//        producer.start();
+//        consumer.start();
+
+
     }
 }
